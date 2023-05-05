@@ -84,9 +84,10 @@ export default defineComponent({
       state.isEditable = false;
     };
     const handlerSaveTask = (index: number) => {
-      state.taskList[index] = state.taskUpdate;
-
-      state.isEditable = true;
+      if (state.taskUpdate !== "") {
+        state.taskList[index] = state.taskUpdate;
+        state.isEditable = true;
+      }
     };
     const handlerChangValue = (e: Event) => {
       state.taskUpdate = (e.target as HTMLInputElement).value;
